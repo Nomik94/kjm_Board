@@ -25,7 +25,7 @@ export class BoardService {
     return await this.postRepository.findOne({ where: { id } });
   }
 
-  async getRelatedPosts(data): Promise<Board[]> {
+  async getRelatedPosts(data: relatedPostDTO): Promise<Board[]> {
     const allPosts = await this.postRepository.find();
     const [standardPost] = allPosts.filter((p) => p.id === data.id);
     const filterPosts = allPosts.filter((p) => p.id !== data.id);
